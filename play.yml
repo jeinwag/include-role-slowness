@@ -1,0 +1,28 @@
+- name: test
+  hosts: localhost
+  vars:
+    seq_limit: 20
+  tasks:
+    - name: run 1
+      include_role:
+        name: dummyrole
+      with_sequence: start=1 end='{{seq_limit}}'
+      vars:
+        dummyargs:
+          - "{{item}}"
+
+    - name: run 2 
+      include_role:
+        name: dummyrole
+      with_sequence: start=1 end='{{seq_limit}}'
+      vars:
+        dummyargs: 
+          - "{{item}}"
+
+    - name: run 3
+      include_role:
+        name: dummyrole
+      with_sequence: start=1 end='{{seq_limit}}'
+      vars:
+        dummyargs:          
+          - "{{item}}"
